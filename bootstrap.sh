@@ -5,9 +5,14 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo -E apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
 echo updating package information
-sudo apt-get -y update >/dev/null 2>&1
+sudo apt -y update >/dev/null 2>&1
 
-sudo apt-get -y install git gcc build-essential libreadline-dev zlib1g-dev libssl1.0-dev
+sudo apt -y install git gcc build-essential libreadline-dev zlib1g-dev libssl1.0-dev libsqlite3-dev
+
+# Install Node.js(stable)
+sudo apt install -y nodejs npm
+sudo npm install n -g
+sudo n stable
 
 # Install rbenv
 RBENV_DIR=/home/vagrant/.rbenv
@@ -25,3 +30,5 @@ rbenv global 2.3.7
 
 # Install Rails 5.0.2
 gem install rails -v 5.0.2
+gem install spring -v 1.7.2
+cd /vagrant/fileupload-demo && bundle install
