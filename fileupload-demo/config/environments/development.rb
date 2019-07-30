@@ -51,4 +51,10 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Vagrant下で変数がviewに渡らない現象対策
+  config.reload_classes_only_on_change = false;
+
+  # Vagrantでweb-consoleが使えない現象対策
+  config.web_console.whitelisted_ips = '0.0.0.0/0'
 end
