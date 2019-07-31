@@ -1,5 +1,5 @@
 <div class="upload-form">
-  <%= form_for(@upload_file, method: :post, class: 'dropzone form', id: 'media-dropzone') do %>
+  <%= form_for(@upload_file, :url => { :controller => :file_upload, :action => :create }, method: :post, :html => {:class => 'dropzone', :id => 'media-dropzone'}) do %>
     <div class="fallback">
       <%= file_field_tag 'media', multiple: true %>
     </div>
