@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'file_upload#index'
 
   resources :file_upload, only: [:create]
+  get 'render_uploaded_file_html', to: 'file_upload#render_uploaded_file_html'
 end

@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class FileUploadController < ApplicationController
   def index
     console
@@ -9,6 +11,15 @@ class FileUploadController < ApplicationController
     @upload_file = UploadFile.new(file: params[:file])
     @upload_file.save!
     @upload_file.update_attribute("file_url", @upload_file.file.url)
-    render json: {"message": "create called"}
+    file_json = {
+      "file_identifier" => @upload_file.file_identifier,
+      "file_url" => @upload_file.file.url
+    }
+    render :json => file_json
+  end
+
+  def render_uploaded_file_html
+    file = OpenStruct.new(params['file'])
+    render partial: "uploaded_file", :locals => { :file => file}
   end
 end
