@@ -2,6 +2,7 @@ class FileUploadController < ApplicationController
   def index
     console
     @upload_file = UploadFile.new
+    @upload_files = UploadFile.all
   end
 
   def create
