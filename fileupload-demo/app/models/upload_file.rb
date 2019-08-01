@@ -1,3 +1,3 @@
 class UploadFile < ApplicationRecord
-    mount_uploader :file_name, FileUploader
+    mount_uploader :file, FileUploader
 end

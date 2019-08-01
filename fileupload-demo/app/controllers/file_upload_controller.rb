@@ -6,9 +6,9 @@ class FileUploadController < ApplicationController
   end
 
   def create
-    @upload_file = UploadFile.new(file_name: params[:file])
+    @upload_file = UploadFile.new(file: params[:file])
     @upload_file.save!
-    @upload_file.update_attribute("file_url", @upload_file.file_name.url)
+    @upload_file.update_attribute("file_url", @upload_file.file.url)
     render json: {"message": "create called"}
   end
 end
