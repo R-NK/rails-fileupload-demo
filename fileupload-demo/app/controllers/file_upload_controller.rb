@@ -10,12 +10,13 @@ class FileUploadController < ApplicationController
 
   def create
     @upload_file = UploadFile.new(file: params[:file])
-    url = @upload_file.file.url
-    encoded_url = URI.encode(url)
-    file_name = File.basename(URI.parse(encoded_url).path)
     @upload_file.save!
+    
+    encoded_url = URI.encode(@upload_file.file.url)
+    file_name = File.basename(URI.parse(encoded_url).path)
     @upload_file.update_attribute("file_name", file_name)
     @upload_file.update_attribute("file_url", @upload_file.file.url)
+
     file_json = {
       "file_name" => @upload_file.file_name,
       "file_url" => @upload_file.file_url
