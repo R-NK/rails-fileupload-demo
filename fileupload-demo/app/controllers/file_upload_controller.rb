@@ -1,4 +1,5 @@
 require 'ostruct'
+require 'uri'
 
 class FileUploadController < ApplicationController
   def index
@@ -9,11 +10,15 @@ class FileUploadController < ApplicationController
 
   def create
     @upload_file = UploadFile.new(file: params[:file])
+    url = @upload_file.file.url
+    encoded_url = URI.encode(url)
+    file_name = File.basename(URI.parse(encoded_url).path)
     @upload_file.save!
+    @upload_file.update_attribute("file_name", file_name)
     @upload_file.update_attribute("file_url", @upload_file.file.url)
     file_json = {
-      "file_identifier" => @upload_file.file_identifier,
-      "file_url" => @upload_file.file.url
+      "file_name" => @upload_file.file_name,
+      "file_url" => @upload_file.file_url
     }
     render :json => file_json
   end
