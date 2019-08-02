@@ -26,6 +26,7 @@ class FileUploadController < ApplicationController
 
   def render_uploaded_file_html
     file = OpenStruct.new(params['file'])
+    file.created_at = Time.now()
     render partial: "uploaded_file", :locals => { :file => file}
   end
 end
