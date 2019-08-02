@@ -1,6 +1,6 @@
 <div id="uploaded_file_container" class="featureListItem">
   <% if is_file_expired?(file)%>
-    <i class="material-icons">cloud_off</i>
+    <i class="material-icons md-36">cloud_off</i>
     <div class="featureListItem__description">
       <%= file.file_name %>
     </div>
@@ -11,10 +11,13 @@
     <% if File.extname(file.file_name) =~ /(jpg|jpeg|png|gif)/ %>
       <%= image_tag file.file_url %>
     <% else %>
-      <i class="material-icons">insert_drive_file</i>
+      <i class="material-icons md-36">insert_drive_file</i>
     <% end %>
     <div class="featureListItem__description">
       <%= file.file_name %>
+    </div>
+    <div class="featureListItem__description">
+      <%= number_to_human_size(file.file_size) %>
     </div>
   <% end %>
 </div>
