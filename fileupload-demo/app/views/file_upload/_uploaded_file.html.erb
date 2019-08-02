@@ -1,10 +1,20 @@
 <div id="uploaded_file_container" class="featureListItem">
-  <% if File.extname(file.file_name) =~ /(jpg|jpeg|png|gif)/ %>
-    <%= image_tag file.file_url %>
+  <% if is_file_expired?(file)%>
+    <i class="material-icons">cloud_off</i>
+    <div class="featureListItem__description">
+      <%= file.file_name %>
+    </div>
+    <div class="featureListItem__description">
+      保存期間が終了しました。
+    </div>
   <% else %>
-    <i class="material-icons">insert_drive_file</i>
+    <% if File.extname(file.file_name) =~ /(jpg|jpeg|png|gif)/ %>
+      <%= image_tag file.file_url %>
+    <% else %>
+      <i class="material-icons">insert_drive_file</i>
+    <% end %>
+    <div class="featureListItem__description">
+      <%= file.file_name %>
+    </div>
   <% end %>
-  <div class="featureListItem__description">
-    <%= file.file_name %>
-  </div>
 </div>
