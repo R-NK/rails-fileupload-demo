@@ -1,3 +1,10 @@
-<div id="uploaded_file_container">
-  <%= file.file_identifier %>
+<div id="uploaded_file_container" class="featureListItem">
+  <% if File.extname(file.file_identifier) =~ /(jpg|jpeg|png|gif)/ %>
+    <%= image_tag file.file_url %>
+  <% else %>
+    <i class="material-icons">insert_drive_file</i>
+  <% end %>
+  <div class="featureListItem__description">
+    <%= file.file_identifier %>
+  </div>
 </div>

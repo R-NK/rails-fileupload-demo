@@ -62,4 +62,4 @@ gem 'fog-aws'
 
 gem 'dotenv-rails'
 
-gem 'rails-file-icons'
+gem 'material_icons'

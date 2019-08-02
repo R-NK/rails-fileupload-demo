@@ -4,3 +4,43 @@
 //
 //*= require dropzone/basic
 //*= require dropzone/dropzone
+
+.featureListItem {
+  /**
+     * Lay out the children of this container with
+     * flexbox, which is horizontal by default.
+     */
+  display: flex;
+
+  /**
+     * Align the children in the center, along
+     * the main axis, which is horizontal in this case.
+     */
+  align-items: center;
+
+  max-width: 400px;
+  padding: 10px;
+
+  img {
+    height: 80px;
+  }
+}
+
+.featureListItem + .featureListItem {
+  border-top: 1px solid #d7dbdd;
+}
+
+.featureListItem__icon,
+.featureListItem__description {
+  padding: 5px 15px;
+}
+
+.featureListItem__icon {
+  font-size: 50px;
+  line-height: 0px;
+}
+
+.featureListItem__description {
+  color: #57727c;
+  font-size: 12px;
+}
